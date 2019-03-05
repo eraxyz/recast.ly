@@ -1,7 +1,22 @@
 import VideoListEntry from './VideoListEntry.js';
 
 var VideoList = (props) => (
-  <div className="video-list">
+  // constructor(props){
+  //   super(props);
+  // }
+
+  // onVideoClick() {
+
+  //   // prop.videos.filter((video) => video.snippet.title === )
+
+  //   // props.state.setState({
+  //   //   selected:  
+  //   // })
+  //   console.log('')
+
+  // }
+
+  <div className="video-list" >
       {props.videos.map((hello) => <VideoListEntry video={hello} />)}
   </div>
 );
