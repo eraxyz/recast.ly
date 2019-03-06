@@ -20,10 +20,12 @@ var hasSameShape = function(objectOne, objectTwo) {
 
   for (var key in objectOne) {
     if (!key in objectTwo) {
+
       return false;
     }
 
     if (typeof objectOne[key] !== typeof objectTwo[key]) {
+      // console.log(typeof objectOne[key], typeof objectTwo[key], key)
       return false;
     }
 
@@ -81,7 +83,9 @@ describe('searchYouTube', function() {
     xhr.restore();
 
     searchYouTube(options, (data) => {
+      console.log(data, exampleVideoData);
       expect(hasSameShape(data, exampleVideoData)).to.be.true;
+
       done();
     });
   });

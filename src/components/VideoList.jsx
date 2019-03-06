@@ -1,26 +1,20 @@
 import VideoListEntry from './VideoListEntry.js';
 
-var VideoList = (props) => (
-  // constructor(props){
-  //   super(props);
-  // }
-
-  // onVideoClick() {
-
-  //   // prop.videos.filter((video) => video.snippet.title === )
-
-  //   // props.state.setState({
-  //   //   selected:  
-  //   // })
-  //   console.log('')
-
-  // }
-
-  <div className="video-list" >
-      {props.videos.map((hello) => <VideoListEntry video={hello} />)}
-  </div>
-);
-
+var VideoList = (props) => {
+  console.log(props, props.videos)
+  if(props.videos !== undefined && props.videos.length !== 0){
+    return (
+      <div className="video-list" >
+        {props.videos.map((hello) => <VideoListEntry video={hello} that={props.that}/>)}
+      </div>
+    )
+  } else {
+    return (
+      <div className="video-list"><em>Video List</em>
+    </div>
+    )
+  }
+}
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
 VideoList.propTypes = {

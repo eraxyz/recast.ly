@@ -1,16 +1,37 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 
-var VideoPlayer = (props) => (
+var VideoPlayer = (props) => {
+
+  let video = props.video;
+
+  if (props.state !== undefined && props.state.selected !== undefined && props.state.selected.snippet.title !== props.video.snippet.title) {
+    video = props.state.selected;
+    
+  }
+  
+  if (video !== undefined) {return (
   <div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={"https://www.youtube.com/embed/" + props.video.id.videoId} allowFullScreen></iframe>
+      <iframe className="embed-responsive-item" src={"https://www.youtube.com/embed/" + video.id.videoId} allowFullScreen></iframe>
     </div>
     <div className="video-player-details">
-      <h3>{props.video.snippet.title}</h3>
-      <div>{props.video.snippet.description}</div>
+      <h3>{video.snippet.title}</h3>
+      <div>{video.snippet.description}</div>
     </div>
   </div>
-);
+  )} else {
+  return (
+  <div className="video-player">
+    <div className="embed-responsive embed-responsive-16by9">
+      <iframe className="embed-responsive-item" src={"https://www.youtube.com/embed/"} allowFullScreen></iframe>
+    </div>
+    <div className="video-player-details">
+      <h3>"Video Title"</h3>
+      <div>"Video Description"</div>
+    </div>
+  </div>)
+  }
+};
 
 
 // PropTypes tell other developers what `props` a component expects
