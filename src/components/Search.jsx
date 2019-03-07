@@ -1,16 +1,10 @@
 var Search = (props) => {
 
-  var handleSubmit = function(event){
-    var formData = event.target
-    console.log(event)
-    // props.state.setState({value: event.target.value})  
-  }
-
 
   return (
     <div className="search-bar form-inline">
-      <input className="form-control" type="text"/>
-      <button className="btn hidden-sm-down" onClick={handleSubmit.bind(props.that)} >
+      <input className="form-control" type="text" onChange={props.handleSubmit()}/>
+      <button className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>
     </div> 

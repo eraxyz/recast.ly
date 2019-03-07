@@ -28,6 +28,10 @@ class App extends React.Component{
   }
 
 
+  handleSubmit(input) {
+    searchYouTube({key: key, query: input})
+  }
+
   render() {
 
 
@@ -35,7 +39,7 @@ class App extends React.Component{
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em> <Search state={this.state} that={this}/> </h5></div>
+          <div><h5><em>search</em> <Search handleSubmit={this.handleSubmit.bind(this)}/> </h5></div>
         </div>
       </nav>
       <div className="row">
