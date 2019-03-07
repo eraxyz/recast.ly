@@ -6,6 +6,6 @@ import key from './config/youtube.js'
 
 var options = {query:'cats and stuff', key: key, };
 
-searchYouTube(options, (toast) => {
-  ReactDOM.render(<App searchYouTube={searchYouTube} data={toast}/>, document.getElementById('app'));
+searchYouTube(options, (query) => {
+  ReactDOM.render(<App searchYouTube={searchYouTube} data={query}/>, document.getElementById('app'));
 });

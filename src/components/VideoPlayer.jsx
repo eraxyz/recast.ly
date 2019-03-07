@@ -3,11 +3,6 @@ import exampleVideoData from '../data/exampleVideoData.js';
 var VideoPlayer = (props) => {
 
   let video = props.video;
-
-  if (props.state !== undefined && props.state.selected !== undefined && props.state.selected.snippet.title !== props.video.snippet.title) {
-    video = props.state.selected;
-    
-  }
   
   if (video !== undefined) {return (
   <div className="video-player">

@@ -19,7 +19,6 @@ class App extends React.Component{
 
   constructor(props){
     super(props);
-    console.log(props, props.data)
     this.state = {
       done: false,
       selected: undefined,
@@ -29,8 +28,19 @@ class App extends React.Component{
 
 
   handleSubmit(input) {
-    searchYouTube({key: key, query: input})
+    searchYouTube({key: key, query: input}, (videos) => {this.setState({selected: videos[0], list: videos})});
   }
+
+  onVideoClick(title) {
+    var correctVid = this.state.list.filter((video) => video.snippet.title === title)
+
+    this.setState({
+      selected: correctVid[0]
+    });
+
+    <VideoPlayer video={correctVid[0]} />
+  }
+
 
   render() {
 
@@ -47,7 +57,7 @@ class App extends React.Component{
           <div>
             <h5>
           
-              <VideoPlayer video={this.state.selected} state={this.state}/>
+              <VideoPlayer video={this.state.selected}/>
           
             </h5>
           </div>
@@ -55,7 +65,7 @@ class App extends React.Component{
         <div className="col-md-5">
           <div><h5>
 
-            <VideoList videos={this.state.list} state={this.state} that={this}/>  
+            <VideoList videos={this.state.list} onVideoClick={this.onVideoClick.bind(this)}/>  
 
 
           </h5></div>

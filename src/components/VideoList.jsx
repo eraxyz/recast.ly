@@ -1,11 +1,10 @@
 import VideoListEntry from './VideoListEntry.js';
 
 var VideoList = (props) => {
-  console.log(props, props.videos)
   if(props.videos !== undefined && props.videos.length !== 0){
     return (
       <div className="video-list" >
-        {props.videos.map((hello) => <VideoListEntry video={hello} that={props.that}/>)}
+        {props.videos.map((video) => <VideoListEntry video={video} onVideoClick={props.onVideoClick}/>)}
       </div>
     )
   } else {
